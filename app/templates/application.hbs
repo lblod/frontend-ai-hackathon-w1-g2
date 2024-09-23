@@ -1,0 +1,44 @@
+{{page-title this.appTitle}}
+
+<AuApp>
+  <AuMainHeader
+    @brandLink={{unless
+                 this.session.isAuthenticated
+                 "https://www.vlaanderen.be/nl"
+               }}
+    @homeRoute="index"
+    @appTitle={{this.appTitle}}
+  >
+    <li class="au-c-list-horizontal__item">
+      <AuLinkExternal
+        @skin="secondary"
+        @icon="question-circle"
+        href="https://abb-vlaanderen.gitbook.io/handleiding-loket/veelgestelde-vragen"
+      >
+        Help
+      </AuLinkExternal>
+    </li>
+</AuMainHeader>
+
+
+<AuMainContainer as |main|>
+      <main.sidebar>
+        <div class="au-c-sidebar">
+          <div class="au-c-sidebar__content">
+              <Shared::MainMenu />
+          </div>
+        </div>
+      </main.sidebar>
+      <main.content>
+        
+        <AuBodyContainer>
+          <AuBodyContainer id="content" @scroll={{true}}>
+            {{outlet}}
+          </AuBodyContainer>
+        </AuBodyContainer>
+      </main.content>
+</AuMainContainer>
+</AuApp>
+
+<AuModalContainer />
+<AuToaster />
