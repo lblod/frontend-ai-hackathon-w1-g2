@@ -2,10 +2,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { validateForm } from '@lblod/ember-submission-form-fields';
 import { action } from '@ember/object';
-import {
-  graph,
-  parse
-} from "rdflib";
+import { graph, parse } from 'rdflib';
 
 export default class BesluitenExtractionsDetailController extends Controller {
   @tracked datasetTriples = [];
@@ -48,7 +45,9 @@ export default class BesluitenExtractionsDetailController extends Controller {
 
   @action
   async save() {
-    const triples = this.formStore.serializeDataWithAddAndDelGraph(this.graphs.sourceGraph);
+    const triples = this.formStore.serializeDataWithAddAndDelGraph(
+      this.graphs.sourceGraph
+    );
     const tempInsertStore = graph();
     //parse(triples.graph, tempInsertStore, 'http://foo', 'text/turtle');
     parse(triples.additions, tempInsertStore, 'http://foo', 'text/turtle');
@@ -74,13 +73,13 @@ export default class BesluitenExtractionsDetailController extends Controller {
 }
 
 async function saveInDB(query) {
-    const endpoint = '/sparql';
-    const body = encodeURI(`query=${query}&format=text/html`);
-    await fetch(endpoint,
-                { method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                  },
-                  body
-                });
+  const endpoint = '/sparql';
+  const body = encodeURI(`query=${query}&format=text/html`);
+  await fetch(endpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body,
+  });
 }

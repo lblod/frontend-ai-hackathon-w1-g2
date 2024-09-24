@@ -1,4 +1,4 @@
-{{page-title this.appTitle}}
+{{page-title "AI assisted dataset enricher"}}
 
 <AuApp>
   <AuMainHeader
@@ -20,7 +20,6 @@
     </li>
 </AuMainHeader>
 
-
 <AuMainContainer as |main|>
       <main.sidebar>
         <div class="au-c-sidebar">
@@ -30,7 +29,12 @@
         </div>
       </main.sidebar>
       <main.content>
-        
+
+        {{#if this.isIndexPage}}
+          <AuHeading @skin="1">AI assisted dataset enricher</AuHeading>
+          <AuHeading @skin="2">Welcome!</AuHeading>
+        {{/if}}
+
         <AuBodyContainer>
           <AuBodyContainer id="content" @scroll={{true}}>
             {{outlet}}
