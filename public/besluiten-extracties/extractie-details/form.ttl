@@ -10,20 +10,20 @@
 nodes:24289e48-258f-4919-8c3e-5783a6acb4a4
     a form:Field;
     form:displayType displayTypes:textArea;
-    form:help "Hier vindt u de ge\u00ebxtraheerde titel van het besluit.";
+    form:help "Hier vindt u de exacte titel van het besluit.";
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
     sh:name "Titel van het besluit";
     sh:order 2;
-    sh:path nodes:e61f56db-6346-4a61-a75e-33e091789e40 .
+    sh:path <http://purl.org/dc/terms/title> .
 
 nodes:99733db1-81a7-493e-bb24-d324fd149736
     a form:Field;
     form:displayType displayTypes:defaultInput;
-    form:help "Hier vindt u de ge\u00ebxtraheerde datum van het besluit.";
+    form:help "Hier vindt u de exacte datum van het besluit.";
     form:partOf nodes:d7b33768-3723-4291-a7be-3d8a7d7cdbc1;
-    sh:name "Datum besluit";
+    sh:name "Datum publicatie besluit";
     sh:order 3;
-    sh:path nodes:8c4f623e-c931-4f8c-95ad-a5b901e8bd11 .
+    sh:path <https://id.erfgoed.net/vocab/ontology#dateBetekend> .
 
 nodes:extracted-maatregel
     a form:Field;
@@ -32,7 +32,7 @@ nodes:extracted-maatregel
    form:partOf nodes:extactie-section-detail;
     sh:name "Beschrijving toelatingsplichtige handelingen";
     sh:order 2;
-    sh:path nodes:e61f56db-6346-4a61-a75e-33e091789e40 .
+    sh:path <http://www.w3.org/ns/oa#exact> .
 
 nodes:extracted-aricle-id
     a form:Field;
@@ -41,7 +41,7 @@ nodes:extracted-aricle-id
    form:partOf nodes:extactie-section-detail;
     sh:name "Identifier artikel";
     sh:order 1;
-    sh:path nodes:e61f56db-6346-4a61-a75e-33e091789e40 .
+    sh:path  nodes:dummy.
 
 
 # Structure
@@ -67,8 +67,7 @@ emb:source-node
 
 nodes:subform a form:SubForm;
     form:includes
-      nodes:extracted-maatregel,
-      nodes:extracted-aricle-id;
+      nodes:extracted-maatregel;
     form:removeLabel "Verwijder geëxtraheerde inhoud";
     sh:name "".
 
@@ -85,5 +84,20 @@ nodes:listing a form:Listing;
 
 nodes:generator a form:Generator. # TODO extend if needed
 
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://www.w3.org/ns/oa#> .
+@prefix ns2: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix ns3: <https://data.vlaanderen.be/ns/slimmeraadpleegomgeving#> .
+@prefix ns4: <http://www.w3.org/ns/prov/> .
+@prefix ns5: <https://id.erfgoed.net/vocab/ontology#> .
+@prefix ns6: <http://purl.org/ontology/bibo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
 nodes:articleScope a form:Scope;
-  sh:path nodes:065f1d7f-8ddc-482a-96d0-607be9336a06 .
+  sh:path ( <https://id.erfgoed.net/vocab/ontology#hasAnnotation> ns1:hasTarget ns1:hasSelector ) .
