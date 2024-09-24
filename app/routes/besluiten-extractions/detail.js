@@ -38,20 +38,26 @@ export default class BesluitenExtractionsDetailRoute extends Route {
 
     const randomIdentifier = randomId();
 
-    const sourceNode = new NamedNode(`https://aanvragen.onroerenderfgoed.be/aanduidingsobjecten/toelatingsaanvragen/${randomIdentifier}`);
+    const sourceNode = new NamedNode(
+      `https://id.erfgoed.net/besluiten/14767`
+    );
     const triples = [
       {
         subject: sourceNode,
-        predicate: new NamedNode('http://www.w3.org/1999/02/22-rdf-syntax-ns#type'),
-        object: new NamedNode("https://inventaris.onroerenderfgoed.be/aanvraag"),
-        graph: FORM_GRAPHS.sourceGraph
+        predicate: new NamedNode(
+          'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
+        ),
+        object: new NamedNode(
+          'https://id.erfgoed.net/vocab/ontology#Besluit'
+        ),
+        graph: FORM_GRAPHS.sourceGraph,
       },
       {
         subject: sourceNode,
         predicate: new NamedNode('http://mu.semte.ch/vocabularies/core/uuid'),
         object: `${randomIdentifier}`,
-        graph: FORM_GRAPHS.sourceGraph
-      }
+        graph: FORM_GRAPHS.sourceGraph,
+      },
     ];
 
     // formStore.parse(`${sourceNode} a <https://inventaris.onroerenderfgoed.be/aanvraag>.`, FORM_GRAPHS.sourceGraph, 'text/turtle');
@@ -73,7 +79,7 @@ export default class BesluitenExtractionsDetailRoute extends Route {
     super.setupController(controller, model);
     controller.datasetTriples = [];
     controller.registerObserver();
-   // controller.setTriplesForTables();
+    // controller.setTriplesForTables();
   }
 }
 
@@ -103,7 +109,6 @@ async function fetchFormData(formName) {
 function getFormDataPath(formName, fileName) {
   return `/besluiten-extracties/${formName}/${fileName}`;
 }
-
 
 function randomId() {
   const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;

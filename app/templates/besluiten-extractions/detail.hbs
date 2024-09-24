@@ -16,4 +16,38 @@
   </AuButton>
 </div>
 
+<div class="au-o-box au-o-box--large">
+  <AuTable @size="large">
+    <:title>Overzicht van de manueel toegevoegde informatie </:title>
+    <:header>
+    <tr>
+      <th>Subject</th>
+      <th>Predicate</th>
+      <th>Object</th>
+    </tr>
+    </:header>
+    <:body>
+    {{#each this.datasetTriples as |triple|}}
+      <tr>
+        <td>{{triple.subject}}</td>
+        <td>{{triple.predicate}}</td>
+        <td>{{triple.object}}
+          {{#if
+             (eq
+             triple.object.datatype.value
+             "http://www.w3.org/1999/02/22-rdf-syntax-ns#langString"
+             )
+          }}
+            @{{triple.object.language}}
+          {{else}}
+            {{#if triple.object.datatype.value}}
+              ^^{{triple.object.datatype}}
+            {{/if}}
+          {{/if}}
+        </td>
+      </tr>
+    {{/each}}
+    </:body>
+  </AuTable>
+</div>
 <AuHr />
