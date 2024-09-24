@@ -1,0 +1,127 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ns1: <http://www.w3.org/ns/oa#> .
+@prefix ns2: <http://mu.semte.ch/vocabularies/ext/> .
+@prefix ns3: <https://data.vlaanderen.be/ns/slimmeraadpleegomgeving#> .
+@prefix ns4: <http://www.w3.org/ns/prov/> .
+@prefix ns5: <https://id.erfgoed.net/vocab/ontology#> .
+@prefix ns6: <http://purl.org/ontology/bibo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix void: <http://rdfs.org/ns/void#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://mu.semte.ch/vocabularies/ext/maatregeltypes/measureTypes> a skos:ConceptScheme ;
+    skos:hasTopConcept <http://mu.semte.ch/vocabularies/ext/maatregeltypes/1>,
+        <http://mu.semte.ch/vocabularies/ext/maatregeltypes/2>,
+        <http://mu.semte.ch/vocabularies/ext/maatregeltypes/3> ;
+    skos:prefLabel "Measure types" .
+
+<https://id.erfgoed.net/besluiten/14767> a <http://data.vlaanderen.be/ns/besluit#Besluit>,
+        ns5:Besluit ;
+    dcterms:hasPart <https://id.erfgoed.net/besluiten/14767/bestanden/23877>,
+        <https://id.erfgoed.net/besluiten/14767/bestanden/23878>,
+        <https://id.erfgoed.net/besluiten/14767/bestanden/23879>,
+        <https://id.erfgoed.net/besluiten/14767/bestanden/23880> ;
+    dcterms:identifier 14767 ;
+    dcterms:publisher <http://example.org/.well-known/genid/2> ;
+    dcterms:source <http://www.ejustice.just.fgov.be/cgi/summary_body.pl?language=nl&pub_date=2019-03-20> ;
+    dcterms:spatial <http://example.org/.well-known/genid/4> ;
+    dcterms:title "Architectenwoning Louis Hagen" ;
+    void:inDataset <https://id.erfgoed.net/datasets/besluiten> ;
+    skos:changeNote <http://example.org/.well-known/genid/10>,
+        <http://example.org/.well-known/genid/6>,
+        <http://example.org/.well-known/genid/8> ;
+    skos:editorialNote ""@nl ;
+    ns5:besluit_handeltOver <https://inventaris.onroerenderfgoed.be/aanduidingsobjecten/113477> ;
+    ns5:besluit_uitgevaardigdAls <https://id.erfgoed.net/thesauri/besluittypes/9> ;
+    ns5:dateBetekend "2019-02-21"^^xsd:date ;
+    ns5:dateSigned "2019-02-21"^^xsd:date ;
+    ns5:precedes <https://id.erfgoed.net/besluiten/14850> ;
+    ns5:rechtsgevolgen <https://id.erfgoed.net/thesauri/besluittypes/12> ;
+    ns5:hasAnnotation <https://id.erfgoed.net/besluiten/14767/bestanden/23878/annotation/890>.
+
+<https://id.erfgoed.net/besluiten/14767/bestanden/23878/annotation/890> a ns1:Annotation ;
+    ns1:hasTarget <https://id.erfgoed.net/besluiten/14767/bestanden/23878/measure/123> .
+
+<https://id.erfgoed.net/besluiten/14767/bestanden/23879/annotationActivity> a ns4:Activity,
+        <https://www.w3.org/ns/activitystreams#Create> ;
+    ns4:wasAssociatedWith <http://example/com/actor/hackathon-oe-ai> ;
+    ### UPDATED THIS
+    ns3:Activiteit_genereertAnnotatie <https://id.erfgoed.net/besluiten/14767/bestanden/23879/annotation/890> .
+
+<http://example.org/.well-known/genid/10> a ns4:Create ;
+    ns4:startedAtTime "2019-02-26T13:28:44.717273+01:00"^^xsd:dateTime ;
+    ns4:wasAssociatedWith "https://id.erfgoed.net/actoren/2299" .
+
+<https://inventaris.onroerenderfgoed.be/aanduidingsobjecten/113477> a ns5:Aanduidingsobject ;
+    ns5:aanduid_aanduidingstype <https://id.erfgoed.net/thesauri/aanduidingstypes/1> .
+
+<http://example.org/.well-known/genid/14> a ns6:Periodical ;
+    dcterms:title "Belgisch Staatsblad"@nl .
+
+<http://example.org/.well-known/genid/16> a dcterms:SizeOrDuration ;
+    rdfs:label "723648 B" ;
+    rdf:value 723648 .
+
+<http://example.org/.well-known/genid/18> a dcterms:MediaType ;
+    rdf:value "application/pdf" .
+
+<http://example.org/.well-known/genid/2> a foaf:Person ;
+    dcterms:identifier "4" ;
+    foaf:name "Bourgeois, Geert"@und .
+
+<http://example.org/.well-known/genid/20> dcterms:identifier 1 ;
+    dcterms:title "Besluit" .
+
+<http://example.org/.well-known/genid/4> a skos:Concept ;
+    dcterms:identifier 40000 ;
+    skos:prefLabel "Oost-Vlaanderen"@nl .
+
+<http://example.org/.well-known/genid/6> a ns4:Publish ;
+    ns4:startedAtTime "2019-02-26T13:29:16.659725+01:00"^^xsd:dateTime ;
+    ns4:wasAssociatedWith "https://id.erfgoed.net/actoren/2299" .
+
+<http://example.org/.well-known/genid/8> a ns4:Modify ;
+    ns4:startedAtTime "2019-07-05T10:01:51.179794+02:00"^^xsd:dateTime ;
+    ns4:wasAssociatedWith "https://id.erfgoed.net/actoren/2299" .
+
+<http://mu.semte.ch/vocabularies/ext/maatregeltypes/2> a ns2:erfgoedMeasureType,
+        skos:Concept ;
+    skos:prefLabel "Allowed without permit" .
+
+<http://mu.semte.ch/vocabularies/ext/maatregeltypes/3> a ns2:erfgoedMeasureType,
+        skos:Concept ;
+    skos:prefLabel "Forbidden" .
+
+<http://www.ejustice.just.fgov.be/cgi/summary_body.pl?language=nl&pub_date=2019-03-20> a ns6:Issue ;
+    dcterms:isPartOf <http://example.org/.well-known/genid/14> ;
+    dcterms:issued "2019-03-20"^^xsd:date ;
+    ns6:issue 62 ;
+    ns6:volume 189 .
+
+<https://id.erfgoed.net/besluiten/14767/bestanden/23878/measure/123> a ns2:erfgoedProtectiveMeasure,
+        ns1:SpecificResource ;
+    ns2:erfgoedhasMeasureType <http://mu.semte.ch/vocabularies/ext/maatregeltypes/1> ;
+    ns1:hasSelector <https://id.erfgoed.net/besluiten/14767/bestanden/23878/selector/456> ;
+    ns1:hasSource <https://id.erfgoed.net/besluiten/14767/bestanden/23878> .
+
+<https://id.erfgoed.net/besluiten/14767/bestanden/23878/selector/456> a ns1:TextQuoteSelector ;
+    ns1:exact """het aanleggen of WIJZigen van verhardmg met een m1mmale gezamenliJke
+grondoppervlakte van 30 m2 of het u1tbre1den van bestaande verhardingen met
+mmimaal 30 m2 , met u1tzondenng van verhardmgen geplaatst bmnen een straal
+van 30 m rond een vergund of een vergund geacht gebouw """ ;
+    ns1:prefix "abc" ;
+    ns1:suffix "def" .
+
+<http://mu.semte.ch/vocabularies/ext/maatregeltypes/1> a ns2:erfgoedMeasureType,
+        skos:Concept ;
+    skos:prefLabel "Needs permit" .
+
+<https://id.erfgoed.net/besluiten/14767/bestanden/23878> a ns6:LegalDocument,
+        ns5:Attachment ;
+    dcterms:extent <http://example.org/.well-known/genid/16> ;
+    dcterms:format <http://example.org/.well-known/genid/18> ;
+    dcterms:title "14767.pdf" ;
+    dcterms:type <http://example.org/.well-known/genid/20> .
