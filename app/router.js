@@ -8,4 +8,10 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('editor');
+
+  this.route('besluiten-extractions', function () {
+    this.route('overview');
+    this.route('detail', { path: '/:id/detail' });
+    this.route('new');
+  });
 });

@@ -1,0 +1,19 @@
+{{page-title @model.title}}
+
+<div class="au-o-box au-o-box--large au-u-2-3@medium au-u-1-1">
+  <AuHeading @skin="2">{{@model.title}}</AuHeading>
+  <SemanticForm
+    @form={{@model.form}}
+    @formStore={{@model.formStore}}
+    @graphs={{@model.graphs}}
+    @sourceNode={{@model.sourceNode}}
+    @forceShowErrors={{this.forceShowErrors}}
+  />
+
+  {{! TODO: Move this to the top bar, as a 'force validation errors' toggle, similar to the read-only one? }}
+  <AuButton class="au-u-margin-top" {{on "click" this.save}}>
+    Bewaar
+  </AuButton>
+</div>
+
+<AuHr />
