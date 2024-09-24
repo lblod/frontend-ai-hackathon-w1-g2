@@ -2,7 +2,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { validateForm } from '@lblod/ember-submission-form-fields';
 import { action } from '@ember/object';
-import { graph, parse } from 'rdflib';
+import { graph, NamedNode, parse } from 'rdflib';
 
 export default class BesluitenExtractionsDetailController extends Controller {
   @tracked datasetTriples = [];
@@ -29,19 +29,21 @@ export default class BesluitenExtractionsDetailController extends Controller {
   }
 
   registerObserver() {
-    // this.formStore.registerObserver(() => {
-    //   this.setTriplesForTables();
-    // });
+    this.formStore.registerObserver(() => {
+      this.setAdditionsTriplesForTables();
+    });
   }
 
-  // setTriplesForTables() {
-  //   this.datasetTriples = this.formStore.match(
-  //     undefined,
-  //     undefined,
-  //     undefined,
-  //     this.graphs.sourceGraph
-  //   );
-  // }
+  setAdditionsTriplesForTables() {
+    //hard coded abstraction breaking. It's hackaton!
+    const addGraph = new NamedNode(`http://mu.semte.ch/libraries/rdf-store/graphs/add?for=http%3A%2F%2Fdata.lblod.info%2Fsourcegraph`);
+    this.datasetTriples = this.formStore.graph.match(
+      undefined,
+      undefined,
+      undefined,
+      addGraph
+    );
+  }
 
   @action
   async save() {

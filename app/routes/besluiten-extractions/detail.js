@@ -39,7 +39,7 @@ export default class BesluitenExtractionsDetailRoute extends Route {
     const randomIdentifier = randomId();
 
     const sourceNode = new NamedNode(
-      `https://aanvragen.onroerenderfgoed.be/aanduidingsobjecten/toelatingsaanvragen/${randomIdentifier}`
+      `https://id.erfgoed.net/besluiten/14767`
     );
     const triples = [
       {
@@ -48,7 +48,7 @@ export default class BesluitenExtractionsDetailRoute extends Route {
           'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
         ),
         object: new NamedNode(
-          'https://inventaris.onroerenderfgoed.be/aanvraag'
+          'https://id.erfgoed.net/vocab/ontology#Besluit'
         ),
         graph: FORM_GRAPHS.sourceGraph,
       },
