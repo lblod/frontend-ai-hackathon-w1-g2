@@ -14,11 +14,10 @@ const RDF = new Namespace('http://www.w3.org/1999/02/22-rdf-syntax-ns#');
 export default class BesluitenExtractionsDetailRoute extends Route {
   async model(params) {
     const formName = 'extractie-details';
-
     let [formTtl, metaTtl, dataTtl] = await Promise.all([
       fetchForm(formName),
       fetchFormMeta(formName),
-      fetchFormData(formName),
+      await getGraphDataFromDB("https://id.erfgoed.net/besluiten/14767")
     ]);
 
     let formStore = new ForkingStore();
@@ -113,4 +112,26 @@ function getFormDataPath(formName, fileName) {
 function randomId() {
   const randomNumber = Math.floor(Math.random() * 9000000000) + 1000000000;
   return randomNumber;
+}
+
+async function getGraphDataFromDB(graph) {
+  const endpoint = '/sparql';
+  const query = `
+    CONSTRUCT {
+      ?s ?p ?o.
+    } WHERE {
+        GRAPH <${graph}> {
+           ?s ?p ?o.
+        }
+    }
+  `;
+  const params = {
+    query,
+    format: "text/plain"
+  };
+  const queryString = new URLSearchParams(params).toString();
+  const callUrl = `${endpoint}?${queryString}`;
+  const response = await fetch(callUrl);
+  const turtle = await response.text();
+  return turtle;
 }
