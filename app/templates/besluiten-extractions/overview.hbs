@@ -24,8 +24,40 @@
           </AuLink>
         </Group>
       </AuToolbar>
-      INSERT TABLE HERE
-      <AuLink @route="besluiten-extractions.detail" @model="123">detail example </AuLink>
+
+
+      <AuTable @size="large">
+        <:header>
+        <tr>
+          <th>Job id</th>
+          <th>Job creatie</th>
+          <th>Job status</th>
+          <th>Aanduidingsobject</th>
+          <th>Besluit</th>
+          <th>Details</th>
+        </tr>
+        </:header>
+        <:body>
+        {{#each this.model as |job|}}
+          <tr>
+            <td>{{job.id}}</td>
+            <td>{{job.created}}</td>
+            <td>{{job.status}}</td>
+            <td>
+              <AuLinkExternal href="{{job.source.uri}}">{{job.source.id}}</AuLinkExternal>
+            </td>
+            <td>
+              <AuLinkExternal href="{{job.source.besluiten.firstObject.uri}}">{{job.source.besluiten.firstObject.titel}}</AuLinkExternal>
+            </td>
+            <td>
+              <AuLink @route="besluiten-extractions.detail" @model="{{job.source.besluiten.firstObject.uri}}">details</AuLink>
+            </td>
+          </tr>
+        {{/each}}
+        </:body>
+      </AuTable>
+
+
     </div>
   </div>
   {{outlet}}

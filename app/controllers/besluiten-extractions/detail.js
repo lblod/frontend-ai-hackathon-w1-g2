@@ -36,7 +36,9 @@ export default class BesluitenExtractionsDetailController extends Controller {
 
   setAdditionsTriplesForTables() {
     //hard coded abstraction breaking. It's hackaton!
-    const addGraph = new NamedNode(`http://mu.semte.ch/libraries/rdf-store/graphs/add?for=http%3A%2F%2Fdata.lblod.info%2Fsourcegraph`);
+    const addGraph = new NamedNode(
+      `http://mu.semte.ch/libraries/rdf-store/graphs/add?for=http%3A%2F%2Fdata.lblod.info%2Fsourcegraph`
+    );
     this.datasetTriples = this.formStore.graph.match(
       undefined,
       undefined,

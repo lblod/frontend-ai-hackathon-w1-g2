@@ -17,7 +17,7 @@ export default class BesluitenExtractionsDetailRoute extends Route {
     let [formTtl, metaTtl, dataTtl] = await Promise.all([
       fetchForm(formName),
       fetchFormMeta(formName),
-      await getGraphDataFromDB("https://id.erfgoed.net/besluiten/14767")
+      await getGraphDataFromDB(params.id),
     ]);
 
     let formStore = new ForkingStore();
@@ -37,32 +37,10 @@ export default class BesluitenExtractionsDetailRoute extends Route {
 
     const randomIdentifier = randomId();
 
-    const sourceNode = new NamedNode(
-      `https://id.erfgoed.net/besluiten/14767`
-    );
-    const triples = [
-      {
-        subject: sourceNode,
-        predicate: new NamedNode(
-          'http://www.w3.org/1999/02/22-rdf-syntax-ns#type'
-        ),
-        object: new NamedNode(
-          'https://id.erfgoed.net/vocab/ontology#Besluit'
-        ),
-        graph: FORM_GRAPHS.sourceGraph,
-      },
-      {
-        subject: sourceNode,
-        predicate: new NamedNode('http://mu.semte.ch/vocabularies/core/uuid'),
-        object: `${randomIdentifier}`,
-        graph: FORM_GRAPHS.sourceGraph,
-      },
-    ];
+    const sourceNode = new NamedNode(params.id);
 
     // formStore.parse(`${sourceNode} a <https://inventaris.onroerenderfgoed.be/aanvraag>.`, FORM_GRAPHS.sourceGraph, 'text/turtle');
     // formStore.parse(`${sourceNode} <http://mu.semte.ch/vocabularies/core/uuid> "${randomIdentifier}".`, FORM_GRAPHS.sourceGraph, 'text/turtle');
-
-    formStore.addAll(triples);
 
     return {
       formName,
@@ -127,7 +105,7 @@ async function getGraphDataFromDB(graph) {
   `;
   const params = {
     query,
-    format: "text/plain"
+    format: 'text/plain',
   };
   const queryString = new URLSearchParams(params).toString();
   const callUrl = `${endpoint}?${queryString}`;
