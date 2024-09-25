@@ -4,6 +4,6 @@ export default class JobModel extends Model {
   @attr('date') created;
   @attr('string') operation;
   @attr('string') status;
-  
-  @belongsTo("aanduidingsobject") source;
+
+  @belongsTo('aanduidingsobject') source;
 }

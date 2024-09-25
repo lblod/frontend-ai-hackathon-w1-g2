@@ -5,6 +5,6 @@ export default class BesluitenExtractionsOverviewRoute extends Route {
   @service store;
 
   model() {
-    return this.store.query('job', {include: "source,source.besluiten"});
+    return this.store.query('job', { include: 'source,source.besluiten' });
   }
 }

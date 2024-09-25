@@ -4,5 +4,4 @@ export default class BesluitModel extends Model {
   @attr('string') titel;
   @attr('string') uri;
   @attr('date') publicatiedatum;
-
 }
